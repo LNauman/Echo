@@ -22,6 +22,14 @@ def playback
       for trans in chatty do
         puts "You said: #{trans}"
       end
+    elsif input == "I have something prepared"
+      puts "Ok, where can I find what you want to say?"
+      print "> "
+      input = gets.chomp
+      File.open(input, 'r') do |f|
+        line = f.readlines 
+        puts "You said: #{line}"
+      end
 
   else
     puts "You said: #{input}"
