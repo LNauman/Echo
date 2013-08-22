@@ -9,7 +9,17 @@ def playback
   if input == "Nothing!"
     puts "Ok, fine!"
   elsif input == "I have a lot to say"
-    puts "I don't have time for that right now!"
+      puts "OK let's hear it!"
+      print "> "
+      input = gets.chomp
+      while input != "done"
+        print "> "
+        input = gets.chomp
+      end
+
+   
+ 
+#puts "I don't have time for that right now!"
   else
     puts "You said: #{input}"
   end
