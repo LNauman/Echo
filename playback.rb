@@ -26,10 +26,25 @@ def playback
       puts "Ok, where can I find what you want to say?"
       print "> "
       input = gets.chomp
-      File.open(input, 'r') do |f|
-        line = f.readlines 
-        puts "You said: #{line}"
+
+      while input != "speech.txt"
+        puts "I couldn't find that file."
+        puts "Where can I find what you want to say?"
+          print "> "
+            input = gets.chomp
       end
+      rows = 0
+
+      File.open(input) {|f| @count = f.read.count("\n")}
+      File.open(input, 'r').each_line do |f|
+        puts "You said: #{f}" if rows == 0
+        rows += 1
+        puts "Then, you said: #{f}" if rows < @count
+        puts "Finally, you said: #{f}" if rows == @count
+
+
+      end
+      puts "Phew! Glad you got all #{@count} of those things off your chest!"
 
   else
     puts "You said: #{input}"
