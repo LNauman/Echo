@@ -1,5 +1,12 @@
 # Beth and Lindsay
 
+# take t
+
+def most_common(a)
+  a.group_by do |e|
+    e
+  end.values.max_by(&:size).first
+end
 
 def playback
   puts "What do you want to say?"
@@ -24,11 +31,24 @@ def playback
         puts "You said: #{trans}"
       end
 
- 
+
 #puts "I don't have time for that right now!"
   else
     puts "You said: #{input}"
+    msg = input.split(//)
+
+    puts most_common(msg)
+
+    # msg.sort!
+    # msg.each do |i|
+    #   puts "#{i}: #{msg.count(msg[0])}"
+    # end
+
+
+
+
   end
+
 end
 
 playback
